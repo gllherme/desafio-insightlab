@@ -1,7 +1,6 @@
 import requests
 
 import app.config
-from app.models.indicator import Indicator, IndicatorGroup
 
 
 def filter_groups(result):
@@ -20,4 +19,4 @@ def filter_groups(result):
 def get_all_indicators():
     r = requests.get(app.config.INDEXES_URL).json()
 
-    return filter_groups(r)
+    return {"groups": filter_groups(r)}

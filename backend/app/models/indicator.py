@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Dict
 
 
 class Indicator(BaseModel):
@@ -7,5 +8,4 @@ class Indicator(BaseModel):
 
 
 class IndicatorGroup(BaseModel):
-    group: str
-    indicators: list[Indicator]
+    groups: Dict[str, list[Indicator]]
