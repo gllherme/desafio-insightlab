@@ -7,11 +7,11 @@ from app.models.country_profile import CountryProfile
 locale.setlocale(locale.LC_ALL, "pt_BR.UTF-8")
 
 
-def get_country_profile(country_code):
+def get_country_profile(country_code: str):
     r = requests.get(app.config.COUNTRY_PROFILE_BASE_URL + country_code).json()
 
     languages = list(set(language["nome"] for item in
-                         r for language in item["linguas"]))
+                         r for language in item["linguas"] if language["nome"] is not None))
 
     currencies = list(set(currency["nome"] for item in r
                           for currency in item["unidades-monetarias"]))
