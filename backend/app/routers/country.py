@@ -26,5 +26,5 @@ async def get_country_query(code: str, indicator_id: str) -> CountryData:
 
 
 @router.get("/codes")
-async def get_all_country_codes() -> list[CountryCode]:
+async def get_all_codes() -> list[CountryCode]:
     return get_all_country_codes()
