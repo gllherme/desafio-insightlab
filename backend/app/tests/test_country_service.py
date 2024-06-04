@@ -1,7 +1,8 @@
-from app.tests.test_main import client
+from pydantic import ValidationError
 
+from app.tests.test_main import client
 from app.models.country_code import CountryCode
-from app.models.country_data import CountryData
+from app.models.country_data import CountryData, DataEntry
 
 
 def test_read_country_codes():
@@ -23,3 +24,10 @@ def test_read_country_data():
     country_data = response.json()
 
     assert isinstance(country_data, dict)
+
+    assert CountryData(**country_data)
+
+    assert country_data["values"]
+
+    for c in country_data["values"]:
+        assert DataEntry(**c)
