@@ -40,3 +40,40 @@ def test_read_country_data_without_values():
     country_data = response.json()
 
     assert isinstance(country_data, dict)
+
+
+def test_read_country_data_filters():
+    start_year, end_year = 2000, 2008
+    base_url = "/country/BR/query/77818"
+
+    def check_values_in_range(values, start_year=None, end_year=None):
+        for i in values:
+            year = int(i["year"])
+            if start_year:
+                assert year >= start_year
+            if end_year:
+                assert year <= end_year
+
+    # start_year e end_year
+    url = f"{base_url}?start_year={start_year}&end_year={end_year}"
+    response = client.get(url)
+    assert response.status_code == 200
+    country_data = response.json()
+    assert country_data["values"]
+    check_values_in_range(country_data["values"], start_year, end_year)
+
+    # soment start_year
+    url = f"{base_url}?start_year={start_year}"
+    response = client.get(url)
+    assert response.status_code == 200
+    country_data = response.json()
+    assert country_data["values"]
+    check_values_in_range(country_data["values"], start_year=start_year)
+
+    # end_year
+    url = f"{base_url}?end_year={end_year}"
+    response = client.get(url)
+    assert response.status_code == 200
+    country_data = response.json()
+    assert country_data["values"]
+    check_values_in_range(country_data["values"], end_year=end_year)
