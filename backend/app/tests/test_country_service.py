@@ -3,6 +3,7 @@ from pydantic import ValidationError
 from app.tests.test_main import client
 from app.models.country_code import CountryCode
 from app.models.country_data import CountryData, DataEntry
+from app.exceptions.no_data_exception import NoDataException
 
 
 def test_read_country_codes():
@@ -31,3 +32,11 @@ def test_read_country_data():
 
     for c in country_data["values"]:
         assert DataEntry(**c)
+
+
+def test_read_country_data_without_values():
+    response = client.get("/country/AF/query/77818")
+    assert response.status_code == 200
+    country_data = response.json()
+
+    assert isinstance(country_data, dict)
