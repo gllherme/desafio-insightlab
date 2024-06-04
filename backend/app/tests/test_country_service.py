@@ -77,3 +77,14 @@ def test_read_country_data_filters():
     country_data = response.json()
     assert country_data["values"]
     check_values_in_range(country_data["values"], end_year=end_year)
+
+    # start_year maior que end_year
+    start_year, end_year = 2010, 2000
+    url = f"{base_url}?start_year={start_year}&end_year={end_year}"
+    response = client.get(url)
+    country_data = response.json()
+    assert response.status_code == 400
+
+    assert country_data == {
+        "message": "ERRO - 'start_year deve ser menor ou igual a end_year'"
+    }
