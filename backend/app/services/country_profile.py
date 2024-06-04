@@ -1,10 +1,8 @@
 import requests
-import locale
 
 import app.config
 from app.models.country_profile import CountryProfile
-
-locale.setlocale(locale.LC_ALL, "pt_BR.UTF-8")
+from app.utils.string_to_float import string_to_float
 
 
 def fetch_profile_data(country_code):
@@ -22,7 +20,7 @@ def extract_unique_non_null_lists(data, key):
 def extract_profile_data(data):
     code = data[0]["id"]["ISO-3166-1-ALPHA-2"]
     name = data[0]["nome"]["abreviado"]
-    area = locale.atof(data[0]["area"]["total"])
+    area = string_to_float(data[0]["area"]["total"])
     region = data[0]["localizacao"]["regiao"]["nome"]
     return code, name, area, region
 
