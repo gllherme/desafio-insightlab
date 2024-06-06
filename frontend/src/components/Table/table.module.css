@@ -3,6 +3,9 @@
   width: 600px;
 
   border-collapse: collapse;
+
+  overflow: hidden;
+  border-radius: var(--border-radius);
 }
 
 .table td,
