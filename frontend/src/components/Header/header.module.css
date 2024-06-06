@@ -1,0 +1,18 @@
+.header {
+  height: 60px;
+  min-width: var(--min-width);
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  color: var(--white);
+  background: var(--gunmetal-blue);
+  padding: 5px 10px;
+}
+
+.text {
+  min-width: var(--min-width);
+  font-size: 32px;
+  font-weight: 600;
+}
