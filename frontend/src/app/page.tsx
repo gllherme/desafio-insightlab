@@ -2,6 +2,7 @@ import { Column } from "react-table";
 import styles from "./page.module.css";
 import Table from "@/components/Table";
 import { useMemo } from "react";
+import Autocomplete from "@/components/Autocomplete";
 
 export default function Home() {
   const data = useMemo(
@@ -34,7 +35,12 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <Table data={data} columns={columns} />
+      <div>
+        <div className={styles.inputs}>
+          <Autocomplete suggestions={["a", "aaaaa", "b", "c"]} />
+        </div>
+        <Table data={data} columns={columns} />
+      </div>
     </main>
   );
 }

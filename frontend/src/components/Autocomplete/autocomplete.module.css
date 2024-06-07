@@ -1,0 +1,45 @@
+.input {
+  height: 42px;
+  max-width: 260px;
+
+  border: 2px solid var(--gunmetal-blue);
+  border-radius: var(--border-radius);
+  padding: 5px 10px;
+
+  outline: none;
+  background: none;
+
+  font-size: 18px;
+  color: var(--black);
+}
+
+.list {
+  position: absolute;
+
+  max-width: 260px;
+  min-width: 260px;
+  border-radius: var(--border-radius);
+
+  background-color: var(--gunmetal-blue);
+  color: var(--white);
+
+  list-style: none;
+}
+
+.list li {
+  padding: 10px;
+  border-radius: var(--border-radius);
+}
+
+.list li:first-child {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.list li:last-child {
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.list li:hover {
+  cursor: pointer;
+  background-color: var(--prussian-blue);
+}
