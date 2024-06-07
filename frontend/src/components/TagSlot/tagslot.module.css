@@ -1,0 +1,13 @@
+.slot {
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  padding: 5px;
+
+  background-color: #fafafa;
+  border-radius: var(--border-radius);
+
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.57) inset;
+}
