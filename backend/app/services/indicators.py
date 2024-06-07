@@ -3,20 +3,32 @@ import requests
 import app.config
 
 
-def filter_groups(result):
-    d = {}
-    for item in result:
-        group, s_name = item["indicador"].split(" - ")
+def filter_categories(result):
+    categories = set({item["indicador"].split(" - ")[0] for item in result})
 
-        id = item["id"]
-        name = s_name
+    filtered = [{"category": category, "values": []}
+                for category in categories]
 
-        d.setdefault(group, []).append({"id": id, "name": name})
+    return filtered
 
-    return d
+
+def organize_values(result):
+    filtered = filter_categories(result)
+
+    for i in result:
+        category, name = i["indicador"].split(" - ")
+
+        for c in filtered:
+            if c["category"] == category:
+                c["values"].append({"id": i["id"], "name": name})
+
+    return filtered
 
 
 def get_all_indicators():
-    r = requests.get(app.config.INDEXES_URL).json()
+    try:
+        r = requests.get(app.config.INDEXES_URL).json()
+    except:
+        raise Exception()
 
-    return {"groups": filter_groups(r)}
+    return organize_values(r)

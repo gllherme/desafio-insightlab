@@ -11,5 +11,5 @@ router = APIRouter(
 
 
 @router.get("/indicators/all")
-async def get_all_indicators_grouped() -> IndicatorGroup:
+async def get_all_indicators_grouped() -> list[IndicatorGroup]:
     return get_all_indicators()

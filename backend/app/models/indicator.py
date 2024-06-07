@@ -8,4 +8,5 @@ class Indicator(BaseModel):
 
 
 class IndicatorGroup(BaseModel):
-    groups: Dict[str, list[Indicator]]
+    category: str
+    values: list[Indicator]
