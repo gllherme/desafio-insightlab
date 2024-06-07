@@ -1,0 +1,17 @@
+.default {
+  padding: 0px 5px;
+
+  text-decoration: none;
+  color: var(--white);
+
+  font-weight: 600;
+}
+
+.active {
+  padding: 0px 5px;
+
+  text-decoration: none;
+  color: var(--blue-green);
+
+  font-weight: 600;
+}
