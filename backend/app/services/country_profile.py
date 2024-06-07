@@ -22,13 +22,14 @@ def extract_profile_data(data):
     name = data[0]["nome"]["abreviado"]
     area = string_to_float(data[0]["area"]["total"])
     region = data[0]["localizacao"]["regiao"]["nome"]
-    return code, name, area, region
+    text = data[0]["historico"]
+    return code, name, area, region, text
 
 
 def get_country_profile(country_code: str):
     fetched_profile = fetch_profile_data(country_code)
 
-    code, name, area, region = extract_profile_data(fetched_profile)
+    code, name, area, region, text = extract_profile_data(fetched_profile)
 
     languages = extract_unique_non_null_lists(fetched_profile, "linguas")
     currencies = extract_unique_non_null_lists(
@@ -40,7 +41,8 @@ def get_country_profile(country_code: str):
         area=area,
         region=region,
         languages=languages,
-        currencies=currencies
+        currencies=currencies,
+        text=text
     )
 
     return profile

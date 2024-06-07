@@ -8,3 +8,4 @@ class CountryProfile(BaseModel):
     region: str
     languages: list[str]
     currencies: list[str]
+    text: str
