@@ -1,6 +1,7 @@
 .input {
   height: 42px;
-  max-width: 260px;
+  min-width: 250px;
+  width: 100%;
 
   border: 2px solid var(--gunmetal-blue);
   border-radius: var(--border-radius);
