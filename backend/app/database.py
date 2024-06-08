@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 
-client = MongoClient("mongodb://root:example@localhost:27017/")
+client = MongoClient("mongodb://root:example@mongo:27017/")
+print(client.list_database_names)
 
 db = client["database"]
 
