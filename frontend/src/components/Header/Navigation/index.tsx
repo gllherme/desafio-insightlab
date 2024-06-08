@@ -21,7 +21,7 @@ export default function Navigation({ navLinks }: NavigationProps) {
   return (
     <>
       {navLinks.map((link) => (
-        <NavItem navLink={link} />
+        <NavItem key={link.href} navLink={link} />
       ))}
     </>
   );
