@@ -1,0 +1,16 @@
+.input {
+  height: 42px;
+  width: 100%;
+  min-width: 300px;
+  border: 1px solid var(--gunmetal-blue);
+  border-radius: var(--border-radius);
+  padding: 5px 10px;
+  background: none;
+  color: var(--black);
+  outline: none;
+  font-size: 16px;
+}
+
+.input:focus {
+  border: 2px solid var(--gunmetal-blue);
+}
