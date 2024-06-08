@@ -1,0 +1,8 @@
+.card {
+  max-width: 400px;
+  min-width: 300px;
+}
+
+.card section {
+  margin: 10px 0;
+}
