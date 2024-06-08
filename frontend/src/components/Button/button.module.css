@@ -1,0 +1,19 @@
+.button {
+  height: 42px;
+  width: 100%;
+  min-width: 300px;
+
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 5px 10px;
+
+  background-color: var(--gunmetal-blue);
+
+  color: var(--white);
+  font-size: 16px;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: var(--prussian-blue);
+}
