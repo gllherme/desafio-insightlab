@@ -1,0 +1,37 @@
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+}
+.wrapper button {
+  height: 42px;
+  width: 100%;
+
+  border: none;
+  padding: 5px 10px;
+
+  background-color: var(--gunmetal-blue);
+
+  color: var(--white);
+  font-size: 16px;
+}
+
+.wrapper button:hover {
+  cursor: pointer;
+  background-color: var(--prussian-blue);
+}
+
+.wrapper button:first-child {
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.wrapper button:last-child {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.active {
+  background-color: var(--prussian-blue) !important;
+}
