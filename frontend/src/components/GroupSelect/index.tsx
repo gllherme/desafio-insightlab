@@ -18,9 +18,9 @@ export default function Select({ options }: Props) {
   return (
     <select className={styles.select}>
       {options?.map(({ category, values }) => (
-        <optgroup label={category}>
+        <optgroup key={category} label={category}>
           {values.map(({ id, name }) => (
-            <option id={id.toString()}>{name}</option>
+            <option key={id.toString()} id={id.toString()}>{name}</option>
           ))}
         </optgroup>
       ))}
