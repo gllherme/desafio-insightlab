@@ -1,9 +1,12 @@
+"use client";
+
 import Autocomplete from "@/components/Autocomplete";
 import TagSlot from "@/components/TagSlot";
+import isAuth from "@/components/isAuth";
 import { mock } from "./mock/mock";
 import styles from "./page.module.css";
 
-export default function Home() {
+function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.wrapper}>
@@ -33,3 +36,5 @@ export default function Home() {
     </main>
   );
 }
+
+export default isAuth(Home);

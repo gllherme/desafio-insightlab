@@ -1,11 +1,14 @@
-import { Column } from "react-table";
-import styles from "./page.module.css";
-import Table from "@/components/Table";
-import { useMemo } from "react";
+"use client";
+
 import Autocomplete from "@/components/Autocomplete";
 import Select from "@/components/GroupSelect";
+import Table from "@/components/Table";
+import isAuth from "@/components/isAuth";
+import { useMemo } from "react";
+import { Column } from "react-table";
+import styles from "./page.module.css";
 
-export default function Home() {
+function Country() {
   const data = useMemo(
     () => [
       {
@@ -71,3 +74,5 @@ export default function Home() {
     </main>
   );
 }
+
+export default isAuth(Country);
