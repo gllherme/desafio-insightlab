@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Path, Query
+from fastapi import APIRouter, Path, Query, Depends
 from typing import Annotated
 
 from app.models.country_profile import CountryProfile
@@ -11,6 +11,7 @@ from app.services.country_codes import get_all_country_codes
 
 from app.exceptions.bad_filter_value_exception import BadFilterValueException
 
+from app.auth.service import oauth2_scheme
 
 router = APIRouter(
     prefix="/country",
@@ -24,7 +25,7 @@ year_param = Annotated[int | None, Query(examples=[2008])]
 
 
 @router.get("/profile/{code}", response_model=CountryProfile)
-async def get_country_profile_by_country_code(code: code_param):
+async def get_country_profile_by_country_code(code: code_param, token: str = Depends(oauth2_scheme)):
     return get_country_profile(code)
 
 
@@ -32,7 +33,8 @@ async def get_country_profile_by_country_code(code: code_param):
 async def get_country_query(code: code_param,
                             indicator_id: indicator_param,
                             start_year: year_param = None,
-                            end_year: year_param = None
+                            end_year: year_param = None, 
+                            token: str = Depends(oauth2_scheme)
                             ):
 
     if (start_year and end_year) and start_year > end_year:
@@ -44,5 +46,5 @@ async def get_country_query(code: code_param,
 
 
 @router.get("/codes", response_model=list[CountryCode])
-async def get_all_codes():
+async def get_all_codes(token: str = Depends(oauth2_scheme)):
     return get_all_country_codes()

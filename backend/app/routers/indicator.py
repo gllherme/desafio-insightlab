@@ -1,7 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 
 from app.models.indicator import IndicatorGroup
 from app.services.indicators import get_all_indicators
+
+from app.auth.service import oauth2_scheme
 
 
 router = APIRouter(
@@ -11,5 +13,5 @@ router = APIRouter(
 
 
 @router.get("/indicators/all")
-async def get_all_indicators_grouped() -> list[IndicatorGroup]:
+async def get_all_indicators_grouped(token: str = Depends(oauth2_scheme)) -> list[IndicatorGroup]:
     return get_all_indicators()
