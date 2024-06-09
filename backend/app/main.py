@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.routers import country, indicator, auth
 
@@ -18,6 +19,11 @@ app.include_router(auth.router)
 app.include_router(country.router)
 app.include_router(indicator.router)
 
+app.add_middleware(CORSMiddleware, 
+                   allow_origins=['*'],
+                   allow_methods=["*"],
+                   allow_headers=["*"],
+                   allow_credentials=True)
 
 @app.get("/")
 async def status():
