@@ -1,11 +1,15 @@
 "use client";
 
+import api from "@/api/api";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
+import Button from "../Button";
 import Input from "../Input";
 import styles from "./registerform.module.css";
-import Button from "../Button";
 
 export default function RegisterForm() {
+  const router = useRouter();
+
   const [values, setValues] = useState({
     username: "",
     password: "",
@@ -22,11 +26,19 @@ export default function RegisterForm() {
     }));
   };
 
-  const submit = () => {
+  const submit = async () => {
     if (values.password !== values.passwordConfirm) {
-      return console.log("a");
+      setValues({ username: "", password: "", passwordConfirm: "" });
+      return;
     }
-    console.log(values);
+
+    try {
+      await api.post("/auth/register", values);
+      router.push("/");
+    } catch (e: any) {
+      setValues({ username: "", password: "", passwordConfirm: "" });
+      alert(e.response.data.detail);
+    }
   };
 
   return (
