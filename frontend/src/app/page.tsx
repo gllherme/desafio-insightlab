@@ -47,7 +47,9 @@ function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.wrapper}>
-        <Select options={options} onChange={fetchProfile} />
+        <div>
+          <Select options={options} onChange={fetchProfile} />
+        </div>
         <div className={styles.card}>
           <section>
             <h3>
