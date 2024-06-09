@@ -55,7 +55,7 @@ export default function Auth() {
   return (
     <main className={styles.main}>
       <TabSwitcher>
-        <div>
+        <div className={styles.padding}>
           <section className={styles.wrapper}>
             <Tab id="login">Login</Tab>
             <Tab id="register">Registrar</Tab>

@@ -35,3 +35,7 @@
 .active {
   background-color: var(--prussian-blue) !important;
 }
+
+.padding {
+  padding: 20px;
+}
