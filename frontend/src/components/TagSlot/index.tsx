@@ -10,7 +10,7 @@ export default function TagSlot({ tags }: TagSlotProps) {
   return (
     <div className={styles.slot}>
       {tags.map((tag) => (
-        <Tag content={tag} />
+        <Tag key={tag} content={tag} />
       ))}
     </div>
   );
