@@ -12,7 +12,7 @@ import Input from "@/components/Input";
 import Button from "@/components/Button";
 
 function Country() {
-  const token = localStorage.getItem("accessToken");
+  let token = "";
   const authHeader = { Authorization: "Bearer " + token };
   const [countryData, setCountryData] = useState([]);
   const [countryCodes, setCountryCodes] = useState([]);
@@ -30,6 +30,10 @@ function Country() {
     ],
     []
   );
+
+  // useEffect(() => {
+  //   token = window.localStorage.getItem("accessToken") as string;
+  // }, []);
 
   const fetchCountryCodes = async () => {
     try {

@@ -7,7 +7,7 @@ import { useEffect } from "react";
 export default function isAuth(Component: React.FC) {
   return function isAuth(props: any) {
     const router = useRouter();
-    const token = localStorage.getItem("accessToken");
+    let token = "";
     const isAuth = token !== "undefined" && token !== null;
 
     const checkAuth = async () => {
@@ -25,6 +25,8 @@ export default function isAuth(Component: React.FC) {
     };
 
     useEffect(() => {
+      token = localStorage.getItem("accessToken") as string;
+
       checkAuth();
 
       if (!isAuth) {

@@ -8,9 +8,13 @@ import { ChangeEvent, useEffect, useState } from "react";
 import styles from "./page.module.css";
 
 function Home() {
-  const token = localStorage.getItem("accessToken");
+  let token = "";
   const [options, setOptions] = useState([]);
   const [countryProfile, setCountryProfile] = useState<any>(null);
+
+  // useEffect(() => {
+  //   token = localStorage.getItem("accessToken") as string;
+  // }, []);
 
   const fetchSuggestions = async () => {
     try {
