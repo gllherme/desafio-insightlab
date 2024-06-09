@@ -16,6 +16,10 @@
   gap: 0px 10px;
 }
 
+.wrapper {
+  max-width: 800px;
+}
+
 @media (max-width: 600px) {
   .inputs {
     margin-bottom: 20px;

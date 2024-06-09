@@ -17,8 +17,8 @@
   align-items: center;
 }
 
-.wrapper input {
-  max-width: 800px;
+.wrapper select {
+  width: 800px;
 }
 
 .card {

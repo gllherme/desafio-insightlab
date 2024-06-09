@@ -1,11 +1,12 @@
 .table {
   min-width: 300px;
-  width: 600px;
+  width: 100%;
 
   border-collapse: collapse;
 
   overflow: hidden;
   border-radius: var(--border-radius);
+  margin-top: 20px;
 }
 
 .table td,
