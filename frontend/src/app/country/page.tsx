@@ -31,9 +31,9 @@ function Country() {
     []
   );
 
-  // useEffect(() => {
-  //   token = window.localStorage.getItem("accessToken") as string;
-  // }, []);
+  useEffect(() => {
+    token = localStorage.getItem("accessToken") as string;
+  }, []);
 
   const fetchCountryCodes = async () => {
     try {

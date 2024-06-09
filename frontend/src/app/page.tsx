@@ -12,9 +12,9 @@ function Home() {
   const [options, setOptions] = useState([]);
   const [countryProfile, setCountryProfile] = useState<any>(null);
 
-  // useEffect(() => {
-  //   token = localStorage.getItem("accessToken") as string;
-  // }, []);
+  useEffect(() => {
+    token = localStorage.getItem("accessToken") as string;
+  }, []);
 
   const fetchSuggestions = async () => {
     try {
