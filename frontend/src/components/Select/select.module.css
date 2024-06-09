@@ -1,0 +1,15 @@
+.select {
+  height: 42px;
+
+  min-width: 250px;
+  width: 100%;
+
+  border: 2px solid var(--gunmetal-blue);
+  border-radius: var(--border-radius);
+  padding: 5px 10px;
+
+  background: none;
+
+  color: var(--gunmetal-blue);
+  font-size: 18px;
+}
