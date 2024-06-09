@@ -4,7 +4,7 @@ from typing import Dict
 
 class DataEntry(BaseModel):
     year: str
-    value: int
+    value: int | float
 
 
 class CountryData(BaseModel):
