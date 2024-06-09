@@ -12,6 +12,6 @@ router = APIRouter(
 )
 
 
-@router.get("/indicators/all")
+@router.get("/all")
 async def get_all_indicators_grouped(token: str = Depends(oauth2_scheme)) -> list[IndicatorGroup]:
     return get_all_indicators()
