@@ -10,7 +10,7 @@ import styles from "./page.module.css";
 function Home() {
   const token = localStorage.getItem("accessToken");
   const [options, setOptions] = useState([]);
-  const [countryProfile, setCountryProfile] = useState<any>({});
+  const [countryProfile, setCountryProfile] = useState<any>(null);
 
   const fetchSuggestions = async () => {
     try {
@@ -36,7 +36,7 @@ function Home() {
       });
       setCountryProfile(data);
     } catch (e) {
-      setCountryProfile({});
+      setCountryProfile(null);
     }
   };
 
@@ -50,33 +50,35 @@ function Home() {
         <div>
           <Select options={options} onChange={fetchProfile} />
         </div>
-        <div className={styles.card}>
-          <section>
-            <h3>
-              {countryProfile.name || ""} ({countryProfile.code || ""}) -{" "}
-              {countryProfile.region || ""}
-            </h3>
-            <div>
-              Area Territorial: {countryProfile.area?.toLocaleString() || ""}{" "}
-              km²
-            </div>
-          </section>
-          <section>
-            <h4>Linguas</h4>
-            <TagSlot tags={countryProfile.languages || []} />
-          </section>
-          <section>
-            <h4>Moedas</h4>
-            <TagSlot tags={countryProfile.currencies || []} />
-          </section>
+        {countryProfile ? (
+          <div className={styles.card}>
+            <section>
+              <h3>
+                {countryProfile.name || ""} ({countryProfile.code || ""}) -{" "}
+                {countryProfile.region || ""}
+              </h3>
+              <div>
+                Area Territorial: {countryProfile.area?.toLocaleString() || ""}{" "}
+                km²
+              </div>
+            </section>
+            <section>
+              <h4>Linguas</h4>
+              <TagSlot tags={countryProfile.languages || []} />
+            </section>
+            <section>
+              <h4>Moedas</h4>
+              <TagSlot tags={countryProfile.currencies || []} />
+            </section>
 
-          <h4>Historico:</h4>
-          <textarea
-            className={styles.textarea}
-            value={countryProfile.text || ""}
-            readOnly
-          />
-        </div>
+            <h4>Historico:</h4>
+            <textarea
+              className={styles.textarea}
+              value={countryProfile.text || ""}
+              readOnly
+            />
+          </div>
+        ) : null}
       </div>
     </main>
   );
