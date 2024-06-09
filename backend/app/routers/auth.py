@@ -19,7 +19,7 @@ async def read_current_user(current_user: Annotated[User, Depends(get_current_ac
 
 
 @router.post("/token")
-async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
+async def login_for_access_token(form_data: User):
     user = authenticate_user(form_data.username, form_data.password)
     if not user:
         raise InvalidCredentialsHTTPException(
